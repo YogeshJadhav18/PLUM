@@ -200,7 +200,11 @@ Articles → Cache → Summaries → Feed Display → Modal → Rewrite
 - Uses system instructions for consistent output
 
 ## 📸 Screenshots / Screen Recording
-https://github.com/user-attachments/assets/cdece586-a926-41dc-a155-3c7c4cd2263d
+
+
+https://github.com/user-attachments/assets/e9bdb4a8-674f-445b-8e08-2d24fb802cc3
+
+
 ### Screen 1: Load Articles
 - Gradient background with centered card
 - Loading spinner animation
@@ -294,4 +298,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-**Built with ❤️ using React, Vite, and Google Gemini AI**
+**Built with using React, Vite, and Google Gemini AI**
