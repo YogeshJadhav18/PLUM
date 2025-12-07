@@ -2,7 +2,7 @@
 
 An intelligent web application that summarizes and simplifies health news articles into a daily digestible feed using AI-powered summarization and rewriting.
 
-## 🚀 Project Setup & Demo
+##  Project Setup & Demo
 
 ### Prerequisites
 - Node.js (v16 or higher)
@@ -51,19 +51,30 @@ npm run preview
 
 ### Problem Statement
 The application addresses the challenge of information overload in health news by:
-1. **Curating** health news articles from various sources
-2. **Summarizing** complex articles into digestible 2-line TL;DRs with 3 key takeaways
-3. **Simplifying** technical content into friendly, accessible language for general audiences
-4. **Organizing** summaries into a paginated, refreshable feed
+Problem Statement
+
+**Health-related information is rapidly growing online, which causes:**
+
+**Users struggle to read full complex medical news**
+
+**Technical jargon increases confusion**
+
+**Lack of time leads to misinformation or skipped reading**
+
+ Our application solves this by:
+✔ Fetching curated health news articles
+✔ Summarizing each article into a 2-line TL;DR
+✔ Providing 3 bullet key takeaways for quick learning
+✔ Rewriting articles into simple, reader-friendly language
+✔ Displaying everything in a clean paginated digest
 
 ### Assumptions Made
-- Articles are provided via mock data (can be extended to RSS feeds or API)
-- AI summarization focuses on health-related content
-- Users prefer concise summaries over full articles
-- Simplified rewrites target high school reading level
+- Using mock article data
+- Focus on health topics
+- AI summaries must remain factual
 - Mobile-first responsive design for accessibility
 
-## 🤖 AI Prompts & Iterations
+## AI Prompts & Iterations
 
 ### Initial Prompts
 
@@ -71,7 +82,7 @@ The application addresses the challenge of information overload in health news b
 ```
 Summarize the following news article into a very short format:
 1) Two-line TL;DR (each line short).
-2) Three bullet 'Key takeaways' (explicit bullets).
+2) Three bullet 'Key takeaways' .
 Do not add any extra commentary.
 ```
 
@@ -80,29 +91,29 @@ Do not add any extra commentary.
 Rewrite the article below in a friendly, simple tone for a general audience (high school reading level).
 - Keep it short: about 4-5 short paragraphs.
 - Use plain language, explain medical terms in parentheses.
-- Keep the facts intact.
+- Keep the facts same as before .
 ```
 
 ### Issues Faced & Refinements
 
-1. **Issue**: AI responses were inconsistent in format
-   - **Solution**: Added explicit formatting instructions and system instructions
+1. **Issue**: Summaries were too long
+   - **Fix**: More strict wording: “very short”
 
-2. **Issue**: Summaries were too verbose
-   - **Solution**: Emphasized "very short" and "concise" in prompts
+2. **Issue**: Missing structure
+   - **Fix**: Explicit numbering format
 
-3. **Issue**: Medical terms weren't explained
-   - **Solution**: Added explicit instruction to explain terms in parentheses
-
+3. **Issue**: Rewrites lost real facts
+   - **Fix**: Added rule “Preserve original meaning”
+     
 4. **Issue**: Rewrites lost important facts
-   - **Solution**: Added "Keep the facts intact" instruction
+   - **Fix**: Added "Keep the facts intact" instruction
 
 ### Final Prompts
 Located in `src/utils/prompts.js` with system instructions in `src/lib/ai.js`:
 - Summarization: Expert health-news editor persona
 - Rewriting: Friendly journalist persona
 
-## 🏗️ Architecture & Code Structure
+##  Architecture & Code Structure
 
 ### Technology Stack
 - **Frontend**: React 19, Vite
@@ -117,14 +128,10 @@ Located in `src/utils/prompts.js` with system instructions in `src/lib/ai.js`:
 plum/
 ├── src/
 │   ├── components/
-│   │   ├── Screen1_Load.jsx          # Step 1: Load articles
-│   │   ├── Screen1_Load.css
-│   │   ├── Screen2_summaryList.jsx   # Step 2: Generate summaries
-│   │   ├── Screen2_summaryList.css
-│   │   ├── Screen3_Feed.jsx          # Step 3: Display feed
-│   │   ├── Screen3_Feed.css
+│   │   ├── Step1_Load.jsx          # Step 1: Load articles
+│   │   ├── Step2_summaryList.jsx   # Step 2: Generate summaries
+│   │   ├── Step3_Feed.jsx          # Step 3: Display feed
 │   │   ├── ArticleModal.jsx          # Expanded article view
-│   │   └── ArticleModal.css
 │   ├── hooks/
 │   │   └── userArticles.js           # React Query hooks
 │   ├── lib/
@@ -219,7 +226,7 @@ https://github.com/user-attachments/assets/cdece586-a926-41dc-a155-3c7c4cd2263d
 - Summary, original, and rewrite sections
 - Action buttons for regeneration
 
-## 🐛 Known Issues / Improvements
+##  Known Issues / Improvements
 
 ### Current Limitations
 1. **API Key Security**: API key is exposed in client-side code (Vite env vars)
@@ -237,38 +244,20 @@ https://github.com/user-attachments/assets/cdece586-a926-41dc-a155-3c7c4cd2263d
 5. **Mobile Pull-to-Refresh**: Only works on touch devices
    - **Improvement**: Add mouse drag support for desktop
 
-### Planned Improvements
-- [ ] Backend API for secure AI calls
-- [ ] User authentication and personalized feeds
-- [ ] Bookmarking and favorites
-- [ ] Search and filtering
-- [ ] Dark mode toggle
-- [ ] Export summaries (PDF, email)
-- [ ] Real-time RSS feed integration
-- [ ] Progressive Web App (PWA) support
-- [ ] Accessibility improvements (ARIA labels, keyboard navigation)
-- [ ] Unit and integration tests
+##  Bonus Work
 
-## ✨ Bonus Work
+### Frontend Enhancements
+-  **Modern Gradient Backgrounds**: Purple gradient theme throughout
+-  **Smooth Animations**: Fade-in, slide-up, hover effects
+-  **Loading States**: Spinners and skeleton screens
+-  **Responsive Design**: Mobile-first, works on all screen sizes
+-  **Pull-to-Refresh**: Native-feeling refresh on mobile
+-  **Card Hover Effects**: Subtle lift animations
+-  **Modal Animations**: Smooth overlay and content transitions
+-  **Color-Coded Sections**: Visual distinction between content types
+-  **Typography**: Modern font stack with proper hierarchy
+-  **Custom Scrollbars**: Styled scrollbars for better aesthetics
 
-### UI/UX Enhancements
-- ✅ **Modern Gradient Backgrounds**: Purple gradient theme throughout
-- ✅ **Smooth Animations**: Fade-in, slide-up, hover effects
-- ✅ **Loading States**: Spinners and skeleton screens
-- ✅ **Responsive Design**: Mobile-first, works on all screen sizes
-- ✅ **Pull-to-Refresh**: Native-feeling refresh on mobile
-- ✅ **Card Hover Effects**: Subtle lift animations
-- ✅ **Modal Animations**: Smooth overlay and content transitions
-- ✅ **Color-Coded Sections**: Visual distinction between content types
-- ✅ **Typography**: Modern font stack with proper hierarchy
-- ✅ **Custom Scrollbars**: Styled scrollbars for better aesthetics
-
-### Code Quality
-- ✅ **Component Separation**: Each screen in its own component
-- ✅ **CSS Modules**: Scoped styling per component
-- ✅ **Error Boundaries**: Graceful error handling
-- ✅ **Loading States**: Comprehensive loading indicators
-- ✅ **Accessibility**: Semantic HTML and ARIA considerations
 
 ## 📝 Environment Variables
 
